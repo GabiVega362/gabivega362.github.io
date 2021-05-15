@@ -1,0 +1,58 @@
+<html>
+<head>
+<title> Drunking Game</title>
+<style>body{
+  widht: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items:center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: tomato;
+}
+#frase, #tipo,#quote{
+  margin-bottom: 50px;
+  width: 60%;
+  text-align: center;
+}
+
+button {
+  font-size: 50px;
+  font-weight: bold;
+  background-color: Lime;
+    border: none;
+  padding :60px;
+  margin-top: 20px;
+  border-radius: 50px;
+}
+</style>
+</head>
+
+<body>
+<h1> Drunky Anime Quotes</h1>
+
+<span id="frase"></span>
+<span id="tipo"></span>
+<span id="quote"></span> 
+
+<button onclick="getQuote()"> Try me </button>
+<script>function getQuote (){
+  fetch("https://animechan.vercel.app/api/random").then(
+  function(respuesta){
+    return respuesta.json()
+  }
+  ).then(
+  function (datos){
+    document.getElementById("frase").innerHTML = "<b>Anime: </b>" +  datos.anime;
+document.getElementById("quote").innerHTML = "<b>Quote: </b>" + datos.quote;
+    document.getElementById("tipo").innerHTML = "<b>Personaje: </b>" +datos.character;
+    
+  }
+  )
+}
+</script>
+</body>
+
+
+
+</html>
